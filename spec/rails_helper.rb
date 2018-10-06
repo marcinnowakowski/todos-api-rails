@@ -10,6 +10,10 @@ require 'rspec/rails'
 # require database cleaner at the top level
 require 'database_cleaner'
 
+#===============================================
+# require request tests
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -91,5 +95,9 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  #===============================================
+  # add request tests
+  config.include RequestSpecHelper, type: :request
 
 end
